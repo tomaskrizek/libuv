@@ -913,7 +913,7 @@ start:
                  MSG_FASTOPEN, (const struct sockaddr*)addr, addrlen);
     } while (n == -1 && (RETRY_ON_WRITE_ERROR(errno) || errno == EINPROGRESS));
 
-    if (n == -1 && errno != 0) {
+    if (n == -1 && errno != 0 && errno != EALREADY) {
 	    fprintf(stderr, "errno = %d\n", errno);
     }
 
